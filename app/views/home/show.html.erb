@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%=@db.title%></h5>
+      </div>
+      <div class="modal-body">
+        <p><%=@db.content%></p>
+        <p><%=@db.created_at%></p>
+      </div>
+      
+      <div class="modal-content">
+        <div class="modal-body">
+            <% @comments.each do |comment| %>
+                <p><%=comment.post_id%> : <%=comment.content%></p>
+                <a href="/home/show/<%=@db.id%>/comments/destroy/<%=comment.id%>" data-method="post">삭제</a>
+            <% end %>
+            <form action="/home/show/<%=@db.id%>/comments/create" method="post">
+                <input class="form-control" type="text" name="input_comment">
+                <input type="submit" class="" id="submit" value="submit">    
+            </form>
+            
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="/home/new"><button type="button" class="btn btn-secondary">글쓰기</button></a>
+        <a href="/home/destroy/<%=@db.id%>"><button type="button" class="btn btn-secondary">삭제</button></a>
+        <a href="/home/edit/<%=@db.id%>"><button type="button" class="btn btn-secondary">수정</button></a>
+        <a href="/"><button type="button" class="btn btn-secondary">목록</button></a>
+      </div>
+    </div>
+</div>

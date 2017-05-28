@@ -1,0 +1,23 @@
+<h1>Read</h1>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>시간</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@db.each do |x|%>
+        <tr>
+          <th scope="row"><%=x.id%></th>
+          <td><a href="/home/show/<%=x.id%>"><%=x.title%></a></td>
+          <td></td>
+          <td><%=x.created_at%></td>
+        </tr>
+    <%end%>
+    <a href="/home/new">글쓰기</a>
+  </tbody>
+</table>
